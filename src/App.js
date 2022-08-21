@@ -1,9 +1,12 @@
+import FirstChat from "./components/FirstChat";
+import SecondChat from "./components/SecondChat";
 const App = () => {
   return (
     <div className="App">
-    helloe
+      <FirstChat />{" "}
+      <SecondChat/>
     </div>
   );
-}
+};
 
 export default App;
