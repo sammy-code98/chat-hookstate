@@ -3,7 +3,15 @@ import ChatBox from "react-custom-chat";
 import store from "../store";
 
 const FirstChat = () => {
-  const firstChatMessageList = useState(store);
+  const { firstChatMessageList, secondChatMessageList } = useState(store);
+
+  const sendMessage = (newMessage) => {
+    firstChatMessageList.merge([{ text: newMessage, person: "primary" }]);
+    setTimeout(() => {
+      secondChatMessageList.merge([{ text: newMessage, person: "secondary" }]);
+    }, 5000);
+  };
+  
   return (
     <div>
       <ChatBox
@@ -13,7 +21,8 @@ const FirstChat = () => {
           navText: "Code Sammy",
           isOpen: true,
         }}
-        firstChatMessageList={firstChatMessageList.get()}
+        messageList={firstChatMessageList.get()}
+        onSendMessage={sendMessage}
       />
     </div>
   );
